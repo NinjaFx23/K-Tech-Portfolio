@@ -1,0 +1,175 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #f4f6f8; 
+    color: #333; 
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; 
+}
+
+header {
+    background-color: #0f172a; 
+    color: white;
+    padding: 1.5rem; 
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+nav strong {
+    font-size: 1.5rem;
+    letter-spacing: 2px; 
+}
+
+#introduction {
+    background-color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 4px solid #3b82f6; 
+}
+
+#introduction h1 {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+#introduction p {
+    font-size: 1.2rem;
+    color: #64748b; 
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+h2 {
+    border-left: 5px solid #3b82f6; 
+    padding-left: 15px;
+    color: #0f172a;
+}
+
+.skills-container {
+    display: flex; 
+    justify-content: space-between; 
+    gap: 20px; 
+    flex-wrap: wrap; /* If screen is small, allow them to stack */
+}
+
+.skill-box {
+    background: white;
+    flex: 1; 
+    padding: 25px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    border-top: 4px solid #10b981; 
+}
+
+.skill-box h3 {
+    margin-top: 0;
+    color: #059669; 
+}
+
+footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.contact-form {
+    max-width: 600px; 
+    margin: 0 auto; 
+    background: #fdfdfd;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+
+.form-group label {
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold;
+    color: #1e293b;
+}
+
+
+.form-group input, 
+.form-group textarea {
+    width: 100%; 
+    padding: 12px;
+    margin-bottom: 20px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 6px; 
+    font-family: inherit; 
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none; 
+    border-color: #3b82f6; 
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
+}
+
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #3b82f6; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer; /* Change mouse to hand icon */
+    transition: background-color 0.3s ease; /* Smooth animation */
+}
+
+
+.btn-submit:hover {
+    background-color: #2563eb; /* Darker Blue */
+}
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {     /*any screen that is 0px to 768px , the rules inside this block will apply*/
+    section {
+        padding: 30px 15px; /*less padding to save space*/
+    } 
+}
+
+h1 {
+    font-size: 2rem; /* Smaller font size for mobile */
+}
+
+.skills-container {
+    flex-direction: column; /* Stack skill boxes vertically */
+}
+
+.skill-box {
+    margin-bottom: 20px; /* Add space between skill boxes */
+    width: 100%; /* Full width for each skill box */
+}
+
+.contact-form {
+    width: 100%; /*Fill the screen*/
+    padding: 20px; /* Less padding inside the white box*/
+}
