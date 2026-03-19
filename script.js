@@ -1,19 +1,14 @@
-// 1. Find the form on the page
+// 1. Find your specific form by its ID
 const myForm = document.getElementById('contactForm');
 
-// 2. Listen for the moment the user clicks "Submit"
+// 2. Listen for the moment the user clicks "Send Strategy Request"
 myForm.addEventListener('submit', function(event) {
     
-    // 3. Stop the page from reloading
-    event.preventDefault();
+    // event.preventDefault();
 
-    // 4. Grab the data the user typed in the boxes
     const userName = document.getElementById('name').value;
-    const userEmail = document.getElementById('email').value;
+    
+    console.log("Strategy Request initiated by: " + userName);
+    console.log("Handing over to Formspree for delivery...");
 
-    // 5. Show a success message
-    alert("Success! Thank you, " + userName + ". We will reply to " + userEmail);
-
-    // 6. Clear the form boxes for the next person
-    myForm.reset();
 });
