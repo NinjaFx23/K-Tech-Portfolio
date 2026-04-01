@@ -12,16 +12,48 @@ body {
     line-height: 1.6;
 }
 
-/* --- 2. Navigation --- */
 header {
     background: #0f172a; /* Dark professional blue/black */
     color: white;
     padding: 1.5rem 5%;
 }
 
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 header nav strong {
     font-size: 1.5rem;
     letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #60a5fa; /* A nice light blue highlight */
+}
+
+/* --- Hamburger Menu Base --- */
+.hamburger {
+    display: none; /* Hidden on desktop screens */
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 /* --- 3. Main Content Layout --- */
@@ -49,7 +81,6 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
-/* --- 4. Skills Layout (Flexbox) --- */
 .skills-container {
     display: flex;
     gap: 2rem;
@@ -75,7 +106,6 @@ h2 {
     color: #475569;
 }
 
-/* --- 5. Contact Form --- */
 .contact-form {
     background: white;
     padding: 2.5rem;
@@ -128,7 +158,118 @@ h2 {
     background: #004494;
 }
 
-/* --- 6. Footer --- */
+.project-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+    border-left: 5px solid #0056b3;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.project-header h2 {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.role-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.project-content p {
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+.btn-outline {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #0056b3;
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #0056b3;
+    color: white;
+}
+
+/* --- 7. Case Study Deep Dive (GloCarbon) --- */
+.back-link {
+    display: inline-block;
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #0f172a;
+}
+
+.case-study-header {
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 2rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+.content-block {
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.tech-stack-list {
+    list-style-position: inside;
+    color: #475569;
+}
+
+.tech-stack-list li {
+    margin-bottom: 0.5rem;
+}
+
+.cta-section {
+    text-align: center;
+    background: #e0f2fe;
+    padding: 3rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.cta-section h2 {
+    border: none;
+    color: #0369a1;
+}
+
+/* --- 8. Footer --- */
 footer {
     text-align: center;
     padding: 2rem;
@@ -136,13 +277,50 @@ footer {
     color: #94a3b8;
 }
 
-/* --- 7. Mobile Responsiveness --- */
 @media (max-width: 768px) {
+    /* Day 5/7 Fixes */
     .skills-container {
-        flex-direction: column; /* Stacks the skill boxes on small screens */
+        flex-direction: column; 
     }
     
     h1 {
         font-size: 2rem;
     }
+
+    /* Nav & Hamburger Menu Fixes */
+    .main-nav {
+        flex-wrap: wrap; /* Allows the menu to drop below the logo */
+    }
+    
+    .hamburger {
+        display: block; /* Show the button on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Hide the links by default on mobile */
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        background: #0f172a;
+        padding: 1rem 0;
+        margin-top: 1rem;
+        border-top: 1px solid #334155;
+    }
+
+    /* JavaScript will add this class when the button is clicked */
+    .nav-links.active {
+        display: flex; 
+    }
+}
+
+/* --- Premium Scroll Animations --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px); /* Pushes the element down by 40 pixels */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Brings it back to its original position */
 }

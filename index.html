@@ -6,32 +6,34 @@
     <title>K-Tech Logic | Sales Engineering & Strategy</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>         
-        <nav>
+        <nav class="main-nav">
             <strong>K-Tech Logic</strong> 
+            <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Case Studies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-
-        <section id="introduction"> 
+        <section id="introduction" class="fade-in"> 
             <h1>Bridging the Gap Between Code and Revenue</h1>
             <p>I translate complex technical architectures into clear business value.</p>
         </section>
         
-        <section id="mission">
+        <section id="mission" class="fade-in">
             <h2>My Mission</h2>
             <p>Technology without strategy is just overhead.</p>
             <p>My mission is to de-risk software investment by aligning engineering reality with sales goals.</p>
         </section>
         
-        <section id="skills"> 
+        <section id="skills" class="fade-in"> 
             <h2>The Technical Arsenal</h2>
-            
             <div class="skills-container"> 
-
                 <div class="skill-box">
                     <h3>Engineering Stack</h3>
                     <ul>
@@ -40,21 +42,18 @@
                         <li>System Design</li>
                     </ul>
                 </div>
-
                 <div class="skill-box">
-                    <h3>Sales strategy</h3>
+                    <h3>Sales Strategy</h3>
                     <ul>
                         <li>Technical Demo Delivery</li>
                         <li>Client Needs Analysis</li>
                         <li>Value-based Selling</li>
                     </ul>      
                 </div>
-    
             </div>
-           
         </section>
 
-        <section id="Experience">
+        <section id="Experience" class="fade-in">
             <h2>Experience Highlights</h2>
             <ul>
                 <li>Led technical sales for SaaS solutions, achieving a 30% increase in conversion rates.</li>
@@ -63,32 +62,26 @@
             </ul>
         </section>
 
-       <section id="contact">
+        <section id="contact" class="fade-in">
             <h2>Let's Build Something Great</h2>
             <p>Ready to align your tech with your revenue goals? Fill this out.</p>
 
             <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjgalkra" method="POST">
-                
                 <div class="form-group"> 
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="e.g. Simon Kamau" required>
                 </div>
-
                 <div class="form-group">
                     <label for="email">Work Email</label>
                     <input type="email" id="email" name="email" placeholder="simon@company.com" required>
                 </div>
-
                 <div class="form-group">
                     <label for="message">Project Details</label>
                     <textarea id="message" name="message" rows="5" placeholder="Tell me about your technical challenge..." required></textarea>
                 </div>
-
                 <button type="submit" class="btn-submit">Send Strategy Request</button>
-
             </form>
         </section>
-        
     </main>
     
     <footer>
@@ -96,50 +89,5 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
