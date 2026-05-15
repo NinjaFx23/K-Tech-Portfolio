@@ -1,3 +1,30 @@
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// 1. Check if the user previously turned on Dark Mode
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-mode');
+    if (themeToggle) themeToggle.textContent = '☀️'; // Change to sun icon
+}
+
+// 2. Listen for the user clicking the button
+if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+        // Toggle the class on the body
+        body.classList.toggle('dark-mode');
+        
+        // Save the setting and change the icon
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            themeToggle.textContent = '☀️';
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeToggle.textContent = '🌙';
+        }
+    });
+}
+
 // 1. Find your specific form by its ID
 const myForm = document.getElementById('contactForm');
 

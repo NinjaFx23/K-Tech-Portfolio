@@ -1,4 +1,31 @@
-/* --- 1. Base Reset & Typography --- */
+/* --- 1. Modern CSS Variables (The Theme Engine) --- */
+:root {
+    /* LIGHT MODE (Default) */
+    --bg-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --nav-bg: #0f172a;
+    --card-bg: white;
+    --accent-color: #0056b3;
+    --accent-hover: #004494;
+    --border-color: #e2e8f0;
+    --text-muted: #475569;
+    --card-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+body.dark-mode {
+    /* DARK MODE (Triggered by JS) */
+    --bg-color: #0f172a; 
+    --text-color: #f8f9fa; 
+    --nav-bg: #020617; 
+    --card-bg: #1e293b; 
+    --accent-color: #3b82f6; 
+    --accent-hover: #60a5fa;
+    --border-color: #334155;
+    --text-muted: #cbd5e1;
+    --card-shadow: 0 10px 15px rgba(0,0,0,0.4);
+}
+
+/* --- 2. Base Reset & Typography --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,32 +34,51 @@
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #2c3e50;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease; 
 }
 
+/* --- 3. Navigation (Desktop Defaults) --- */
 header {
-    background: #0f172a; /* Dark professional blue/black */
+    background: var(--nav-bg);
     color: white;
     padding: 1.5rem 5%;
 }
 
 .main-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Vertically centers everything */
+    flex-wrap: wrap;     /* Allows wrapping on mobile */
 }
 
 header nav strong {
     font-size: 1.5rem;
     letter-spacing: 1px;
+    margin-right: auto; /* 🚀 Pushes everything else to the far right */
 }
 
+/* Theme Toggle Button */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 2rem; /* Spacing between links and moon on desktop */
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1); 
+}
+
+/* Links List (Visible on Desktop) */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -43,284 +89,125 @@ header nav strong {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: #60a5fa; /* A nice light blue highlight */
+    color: var(--accent-hover); 
 }
 
-/* --- Hamburger Menu Base --- */
+/* Hamburger (Hidden on Desktop) */
 .hamburger {
-    display: none; /* Hidden on desktop screens */
+    display: none; 
     font-size: 1.8rem;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
+    margin-left: 15px; /* Spacing between moon and hamburger on mobile */
 }
 
-/* --- 3. Main Content Layout --- */
+/* --- 4. Main Content & Typography --- */
 main {
     max-width: 900px;
     margin: 0 auto;
     padding: 3rem 5%;
 }
 
-section {
-    margin-bottom: 4rem;
-}
+section { margin-bottom: 4rem; }
 
-h1 {
-    font-size: 2.5rem;
-    color: #0f172a;
-    margin-bottom: 1rem;
-}
-
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
 h2 {
     font-size: 2rem;
-    color: #0056b3;
+    color: var(--accent-color);
     margin-bottom: 1rem;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
 }
 
-.skills-container {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-}
+p, ul { color: var(--text-muted); }
 
-.skill-box {
-    background: white;
+/* --- 5. Cards & Containers --- */
+.skills-container { display: flex; gap: 2rem; margin-top: 1.5rem; }
+
+.skill-box, .contact-form, .project-card, .content-block {
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    flex: 1; /* Makes both boxes equal width */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-top: 4px solid #0056b3;
+    box-shadow: var(--card-shadow);
+    border-top: 4px solid var(--accent-color);
+    transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
-.skill-box h3 {
-    margin-bottom: 1rem;
-    color: #0f172a;
+.skill-box:hover, .project-card:hover {
+    transform: translateY(-5px);
 }
 
-.skill-box ul {
-    list-style-position: inside;
-    color: #475569;
-}
+.skill-box ul { list-style-position: inside; }
 
-.contact-form {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-    margin-top: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #0f172a;
-}
-
-.form-group input, 
-.form-group textarea {
+/* --- 6. Form Styling --- */
+.form-group { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.form-group label { font-weight: 600; margin-bottom: 0.5rem; color: var(--text-color); }
+.form-group input, .form-group textarea {
     padding: 0.75rem;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
     font-size: 1rem;
-    transition: border-color 0.3s ease;
 }
 
-.form-group input:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: #0056b3;
+.form-group input:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--accent-color);
 }
 
+/* --- 7. Buttons & Badges --- */
 .btn-submit {
-    background: #0056b3;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s ease;
+    background: var(--accent-color); color: white; border: none;
+    padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold;
+    border-radius: 4px; cursor: pointer; width: 100%; transition: background 0.3s ease;
 }
-
-.btn-submit:hover {
-    background: #004494;
-}
-
-.project-card {
-    background: white;
-    border-radius: 8px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-    margin-top: 2rem;
-    border-left: 5px solid #0056b3;
-}
-
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 1rem;
-}
-
-.project-header h2 {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.role-badge {
-    background: #e0f2fe;
-    color: #0369a1;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.project-content p {
-    margin-bottom: 1rem;
-    color: #475569;
-}
+.btn-submit:hover { background: var(--accent-hover); }
 
 .btn-outline {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid #0056b3;
-    color: #0056b3;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem;
+    border: 2px solid var(--accent-color); color: var(--accent-color);
+    text-decoration: none; font-weight: bold; border-radius: 4px; transition: all 0.3s ease;
 }
+.btn-outline:hover { background: var(--accent-color); color: white; }
 
-.btn-outline:hover {
-    background: #0056b3;
-    color: white;
-}
+.role-badge { background: var(--border-color); color: var(--text-color); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
 
-/* --- 7. Case Study Deep Dive (GloCarbon) --- */
-.back-link {
-    display: inline-block;
-    color: #0056b3;
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    transition: color 0.3s ease;
-}
+.back-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; margin-bottom: 2rem; }
+.back-link:hover { color: var(--text-color); }
 
-.back-link:hover {
-    color: #0f172a;
-}
-
-.case-study-header {
-    margin-bottom: 3rem;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 2rem;
-}
-
-.subtitle {
-    font-size: 1.25rem;
-    color: #475569;
-    margin-bottom: 1rem;
-}
-
-.content-block {
-    margin-bottom: 2.5rem;
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.tech-stack-list {
-    list-style-position: inside;
-    color: #475569;
-}
-
-.tech-stack-list li {
-    margin-bottom: 0.5rem;
-}
-
-.cta-section {
-    text-align: center;
-    background: #e0f2fe;
-    padding: 3rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-}
-
-.cta-section h2 {
-    border: none;
-    color: #0369a1;
-}
+.cta-section { text-align: center; background: var(--card-bg); padding: 3rem; border-radius: 8px; margin-top: 2rem; border: 2px solid var(--accent-color); }
+.cta-section h2 { border: none; }
 
 /* --- 8. Footer --- */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: #0f172a;
-    color: #94a3b8;
-}
+footer { text-align: center; padding: 2rem; background: var(--nav-bg); color: var(--text-muted); }
 
+/* --- 9. Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    /* Day 5/7 Fixes */
-    .skills-container {
-        flex-direction: column; 
-    }
+    .skills-container { flex-direction: column; }
+    h1 { font-size: 2rem; }
     
-    h1 {
-        font-size: 2rem;
-    }
+    /* Show Hamburger, push Moon next to it */
+    .hamburger { display: block; } 
+    .theme-btn { margin-left: 0; } 
 
-    /* Nav & Hamburger Menu Fixes */
-    .main-nav {
-        flex-wrap: wrap; /* Allows the menu to drop below the logo */
-    }
-    
-    .hamburger {
-        display: block; /* Show the button on mobile */
-    }
-
+    /* Hide links by default, style them as a dropdown */
     .nav-links {
-        display: none; /* Hide the links by default on mobile */
-        width: 100%;
-        flex-direction: column;
+        display: none; 
+        width: 100%; 
+        flex-direction: column; 
         text-align: center;
-        background: #0f172a;
-        padding: 1rem 0;
-        margin-top: 1rem;
-        border-top: 1px solid #334155;
+        background: var(--nav-bg); 
+        padding: 1rem 0; 
+        margin-top: 1rem; 
+        border-top: 1px solid var(--border-color);
+        order: 3; /* Pushes the menu below the logo, moon, and hamburger */
     }
-
-    /* JavaScript will add this class when the button is clicked */
-    .nav-links.active {
-        display: flex; 
-    }
+    
+    .nav-links.active { display: flex; }
 }
 
-/* --- Premium Scroll Animations --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px); /* Pushes the element down by 40 pixels */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0); /* Brings it back to its original position */
-}
+/* --- 10. Premium Scroll Animations --- */
+.fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
